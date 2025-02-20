@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Management</title>
+    <script type="module" src="./scripts/main.js"></script>
+</head>
+<body>
+    <h1>Admin Management</h1>
+
+    <h2>Add Entity</h2>
+    <label for="entitySelect">Select Entity:</label>
+    <select id="entitySelect" name="entitySelect">
+        <option value="film">Film</option>
+        <option value="booking">Booking</option>
+        <option value="screening">Screening</option>
+        <option value="theatre">Theatre</option>
+        <option value="ticket">Ticket</option>
+        <option value="ticketType">Ticket Type</option>
+    </select><br>
+
+    <form id="addEntityForm">
+        <div id="formFields">
+            <!-- Form fields will be dynamically inserted here -->
+        </div>
+        <button type="button" id="addEntityBtn">Add</button>
+        <button type="button" id="updateEntityBtn">Update</button>
+    </form>
+
+    <h2>Manage Entity</h2>
+    <label for="manageEntitySelect">Select Entity:</label>
+    <select id="manageEntitySelect" name="manageEntitySelect">
+        <option value="film">Film</option>
+        <option value="booking">Booking</option>
+        <option value="screening">Screening</option>
+        <option value="theatre">Theatre</option>
+        <option value="ticket">Ticket</option>
+        <option value="ticketType">Ticket Type</option>
+    </select><br>
+
+    <label for="entityID">Entity ID:</label>
+    <input type="text" id="manageEntityID" name="entityID" required><br>
+
+    <button type="button" id="getEntityBtn">Get</button>
+    <button type="button" id="deleteEntityBtn">Delete</button>
+</body>
+</html>
