@@ -132,21 +132,33 @@ document.getElementById('updateEntityBtn').addEventListener('click', async () =>
 document.getElementById('getEntityBtn').addEventListener('click', async () => {
     const entity = document.getElementById('manageEntitySelect').value;
     const entityID = document.getElementById('manageEntityID').value;
+    const entityDataDiv = document.getElementById('entityData');
 
     try {
         const response = await fetch(`/api/${entity}s/${entityID}`);
         if (response.ok) {
             const data = await response.json();
             console.log(data);
-            alert(`${entity.charAt(0).toUpperCase() + entity.slice(1)}: ${JSON.stringify(data)}`);
+            entityDataDiv.innerHTML = formatEntityData(entity, entityID, data);
         } else {
-            alert(`Failed to get ${entity}.`);
+            entityDataDiv.innerHTML = `<p>Failed to get ${entity}.</p>`;
         }
     } catch (error) {
         console.error('Error:', error);
-        alert(`An error occurred while getting the ${entity}.`);
+        entityDataDiv.innerHTML = `<p>An error occurred while getting the ${entity}.</p>`;
     }
 });
+
+function formatEntityData(entity, entityID, data) {
+    let formattedData = `<h3>${entity.charAt(0).toUpperCase() + entity.slice(1)}: ${entityID} Data</h3><ul>`;
+    for (const key in data) {
+        if (data.hasOwnProperty(key)) {
+            formattedData +=`<li><strong>${key}:</strong> ${data[key]}</li>`;
+        }
+    }
+    formattedData += '</ul>';
+    return formattedData;
+}
 
 document.getElementById('deleteEntityBtn').addEventListener('click', async () => {
     const entity = document.getElementById('manageEntitySelect').value;
@@ -169,4 +181,4 @@ document.getElementById('deleteEntityBtn').addEventListener('click', async () =>
 });
 
 // Initialize form fields on page load
-updateFormFields();
+document.addEventListener('DOMContentLoaded', updateFormFields);
