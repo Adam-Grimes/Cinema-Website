@@ -1,6 +1,7 @@
 const express = require('express');
 const { db } = require('../firebase-config');
-const { collection, doc, setDoc, getDoc, updateDoc, deleteDoc } = require("firebase/firestore");
+const { collection, doc, setDoc, getDoc, updateDoc, deleteDoc, getDocs } = require("firebase/firestore");
+
 
 const router = express.Router();
 
@@ -66,6 +67,17 @@ router.delete('/:filmID', async (req, res) => {
         res.status(200).json({ message: "Film deleted successfully." });
     } catch (error) {
         res.status(500).json({ error: "Error deleting film: " + error.message });
+    }
+});
+
+// Get all Film IDs
+router.get('/', async (req, res) => {
+    try {
+        const filmsSnapshot = await getDocs(collection(db, "Film"));
+        const films = filmsSnapshot.docs.map(doc => ({ id: doc.id }));
+        res.status(200).json(films);
+    } catch (error) {
+        res.status(500).json({ error: "Error fetching films: " + error.message });
     }
 });
 
