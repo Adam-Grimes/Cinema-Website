@@ -3,48 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Management</title>
-    <script type="module" src="./scripts/main.js"></script>
+    <title>Cinema Admin Panel</title>
+    <link rel="stylesheet" href="admin.css">
+    <script defer src="admin.js"></script>
 </head>
 <body>
-    <h1>Admin Management</h1>
+    <div class="container">
+        <aside class="sidebar">
+            <h2>Cinema Admin Panel</h2>
+            <ul id="collections">
+                <li data-collection="bookings">Bookings</li>
+                <li data-collection="films">Films</li>
+                <li data-collection="screenings">Screenings</li>
+                <li data-collection="theatres">Theatres</li>
+                <li data-collection="tickets">Tickets</li>
+                <li data-collection="ticketTypes">Ticket Types</li>
+            </ul>
+        </aside>
+        <main class="main-content">
+            <div class="header">
+                <h2 id="collection-title">Bookings</h2>
+                <button id="create-button">Create New</button>
+            </div>
+            <table id="items-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Info</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </main>
+    </div>
 
-    <h2>Add Entity</h2>
-    <label for="entitySelect">Select Entity:</label>
-    <select id="entitySelect" name="entitySelect">
-        <option value="film">Film</option>
-        <option value="booking">Booking</option>
-        <option value="screening">Screening</option>
-        <option value="theatre">Theatre</option>
-        <option value="ticket">Ticket</option>
-        <option value="ticketType">Ticket Type</option>
-    </select><br>
-
-    <form id="addEntityForm">
-        <div id="formFields">
-            <!-- Form fields will be dynamically inserted here -->
+    <!-- Modal for Create/Edit -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <form id="item-form"></form>
         </div>
-        <button type="button" id="addEntityBtn">Add</button>
-        <button type="button" id="updateEntityBtn">Update</button>
-    </form>
-
-    <h2>Manage Entity</h2>
-    <label for="manageEntitySelect">Select Entity:</label>
-    <select id="manageEntitySelect" name="manageEntitySelect">
-        <option value="film">Film</option>
-        <option value="booking">Booking</option>
-        <option value="screening">Screening</option>
-        <option value="theatre">Theatre</option>
-        <option value="ticket">Ticket</option>
-        <option value="ticketType">Ticket Type</option>
-    </select><br>
-
-    <label for="entityID">Entity ID:</label>
-    <select id="manageEntityID" name="entityID" required>
-        <!-- Options will be dynamically inserted here -->
-    </select><br>
-
-    <button type="button" id="getEntityBtn">Get</button>
-    <button type="button" id="deleteEntityBtn">Delete</button>
+    </div>
 </body>
 </html>
