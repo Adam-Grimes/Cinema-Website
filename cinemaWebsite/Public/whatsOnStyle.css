@@ -1,0 +1,121 @@
+
+:root {
+    --bg-color: #1c1c1c;
+    --primary-color: #b43030;
+    --text-color: #e0e0e0;
+    --accent-color: #a82f2f;
+  }
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+  }
+  header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #333;
+  padding: 15px 30px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  height: 70px;
+}
+
+.site-title {
+position: absolute;
+left: 50%;
+transform: translateX(-50%);
+font-family: 'Montserrat', sans-serif;
+font-size: 36px;
+font-weight: 300; /* Thinner weight */
+text-transform: uppercase;
+letter-spacing: 3px;
+background-color: white;                      /*background: linear-gradient(45deg, #fff, #fff);*/
+-webkit-text-fill-color: transparent;
+-webkit-background-clip: text;
+text-align: center;
+margin: 0;
+padding: 10px 0;
+text-shadow: 0 0 8px rgba(255, 49, 49, 0.6), 0 0 15px rgba(255, 49, 49, 0.4);
+z-index: 0;
+}
+
+  .container {
+    margin: 2rem auto;
+    padding: 0 1rem;
+    width: 70%;      
+  }
+  .movie {
+    background-color: #2c2c2c;
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    border-left: 5px solid var(--primary-color);
+    transition: background-color 0.3s ease;
+  }
+  .movie:hover {
+    background-color: #353535;
+  }
+  .movie h2 {
+    margin-top: 0;
+    color: var(--primary-color);
+  }
+  .movie p {
+    margin: 0.5rem 0;
+  }
+  footer {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    text-align: center;
+    padding: 1rem;
+    background-color: #111;
+    color: #888;
+    font-size: 0.9rem;
+    width: 100%;
+  }
+
+  /* Nav container */
+header nav {
+  z-index: 1;
+  position: absolute;
+  right: 5%;
+  top: 40%;
+
+  }
+   
+  /* Nav link styles with glowing text shadow */
+  header nav a {
+  position: relative;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  color: #fff;
+  text-decoration: none;
+  margin-left: 30px;
+  padding: 5px 10px;
+  transition: all 0.3s ease;
+  text-shadow: 0 0 8px rgba(255, 49, 49, 0.6),
+               0 0 15px rgba(255, 49, 49, 0.4);
+  }
+   
+  header nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 0;
+  height: 3px;
+  background: linear-gradient(45deg, #ff3131, #f13535);
+  transition: width 0.3s ease;
+  }
+   
+  header nav a:hover {
+  color: #ff3131;
+  transform: translateY(-3px);
+  }
+   
+  header nav a:hover::after {
+  width: 100%;
+  }
